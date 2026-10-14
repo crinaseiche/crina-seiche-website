@@ -29,12 +29,5 @@ Built with AI-augmented development using **Claude Code**, combining human direc
 - **Contact** - Get in touch
 - **Footer** - Navigation & links
 
-## 🚀 Getting Started
-```bash
-npm install
-npm run dev      # Development server
-npm run build    # Production build
-```
-
 ## 📄 License
 Personal portfolio - contact for usage inquiries
