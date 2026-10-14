@@ -12,7 +12,7 @@ const {
   title = 'Crina Seiche - Web Developer',
   description = 'Web developer specializing in PHP, Laravel, and client communication. Building reliable solutions.',
   lang = 'en',
-  canonical = 'https://crina-seiche.dev'
+  canonical = 'https://crinaseiche.pages.dev'
 } = Astro.props;
 
 const isRomanian = lang === 'ro';
@@ -29,6 +29,13 @@ const otherLangUrl = canonical.replace(`/${lang}/`, `/${otherLang}/`);
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang={lang} href={canonical} />
     <link rel="alternate" hreflang={otherLang} href={otherLangUrl} />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
     <title>{title}</title>
 
     <!-- Favicon placeholder -->
