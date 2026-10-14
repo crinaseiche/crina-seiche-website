@@ -12,12 +12,15 @@ const {
   title = 'Crina Seiche - Web Developer',
   description = 'Web developer specializing in PHP, Laravel, and client communication. Building reliable solutions.',
   lang = 'en',
-  canonical = 'https://crinaseiche.pages.dev'
+  canonical
 } = Astro.props;
 
 const isRomanian = lang === 'ro';
 const otherLang = isRomanian ? 'en' : 'ro';
-const otherLangUrl = canonical.replace(`/${lang}/`, `/${otherLang}/`);
+const baseUrl = 'https://crinaseiche.pages.dev';
+const currentUrl = lang === 'ro' ? `${baseUrl}/ro/` : `${baseUrl}/`;
+const otherUrl = lang === 'ro' ? `${baseUrl}/` : `${baseUrl}/ro/`;
+const finalCanonical = canonical || currentUrl;
 ---
 
 <!DOCTYPE html>
@@ -26,12 +29,12 @@ const otherLangUrl = canonical.replace(`/${lang}/`, `/${otherLang}/`);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang={lang} href={canonical} />
-    <link rel="alternate" hreflang={otherLang} href={otherLangUrl} />
+    <link rel="canonical" href={finalCanonical} />
+    <link rel="alternate" hreflang={lang} href={currentUrl} />
+    <link rel="alternate" hreflang={otherLang} href={otherUrl} />
 
     <!-- Open Graph / Social Media -->
-    <meta property="og:url" content={canonical} />
+    <meta property="og:url" content={finalCanonical} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
