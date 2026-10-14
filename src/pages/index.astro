@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Experience from '../components/Experience.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Crina Seiche - Web Developer | PHP, Laravel, Web Solutions"
+  description="Web developer specializing in PHP and Laravel. I work closely with clients to understand their needs and build reliable solutions. Based in Oradea, Romania."
+  lang="en"
+  canonical="https://crina-seiche.dev/"
+>
+  <Navigation lang="en" />
+
+  <main id="main-content">
+    <Hero lang="en" />
+    <Services lang="en" />
+    <Experience lang="en" />
+    <Contact lang="en" />
+  </main>
+
+  <Footer lang="en" />
+</Layout>

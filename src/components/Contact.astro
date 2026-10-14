@@ -1,0 +1,53 @@
+---
+interface Props {
+  lang?: 'en' | 'ro';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const content = lang === 'ro' ? {
+  label: 'Contact',
+  heading: 'Hai să discutăm despre proiectul tău.',
+  description: 'Ai o idee de pus în practică, un site de care ai nevoie sau o aplicație care ar putea funcționa mai bine? Scrie-mi și vedem împreună cum te pot ajuta.',
+  buttonText: 'Hai să vorbim',
+  email: 'crina.seiche@gmail.com',
+  phone: '+40744878670',
+} : {
+  label: 'Contact',
+  heading: 'Let\'s talk about your project.',
+  description: 'Have an idea you want to bring to life, need a new website, or want to improve an existing application? Get in touch, and let\'s explore how I can help.',
+  buttonText: 'Let\'s Talk',
+  email: 'crina.seiche@gmail.com',
+  phone: '+40744878670',
+};
+---
+
+<section id="contact" class="py-8 md:py-10 bg-white border-t border-divider mt-8 scroll-mt-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Label -->
+    <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-3">
+      {content.label}
+    </p>
+
+    <!-- Contact Box -->
+    <div class="bg-accent/10 px-8 md:px-12 py-12 md:py-16 rounded-lg flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <!-- Text Content -->
+      <div class="flex-1">
+        <!-- Heading -->
+        <h2 class="text-2xl md:text-3xl font-serif font-semibold text-navy-text mb-3">
+          {content.heading}
+        </h2>
+
+        <!-- Description -->
+        <p class="text-sm md:text-base text-text-secondary">
+          {content.description}
+        </p>
+      </div>
+
+      <!-- CTA Button -->
+      <a href={`mailto:${content.email}`} class="btn btn-primary inline-block whitespace-nowrap">
+        {content.buttonText}
+      </a>
+    </div>
+  </div>
+</section>

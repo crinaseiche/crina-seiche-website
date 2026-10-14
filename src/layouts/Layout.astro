@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: 'en' | 'ro';
+  canonical?: string;
+}
+
+const {
+  title = 'Crina Seiche - Web Developer',
+  description = 'Web developer specializing in PHP, Laravel, and client communication. Building reliable solutions.',
+  lang = 'en',
+  canonical = 'https://crina-seiche.dev'
+} = Astro.props;
+
+const isRomanian = lang === 'ro';
+const otherLang = isRomanian ? 'en' : 'ro';
+const otherLangUrl = canonical.replace(`/${lang}/`, `/${otherLang}/`);
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={lang} href={canonical} />
+    <link rel="alternate" hreflang={otherLang} href={otherLangUrl} />
+    <title>{title}</title>
+
+    <!-- Favicon placeholder -->
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="bg-white">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <slot />
+
+    <script>
+      // Language switcher
+      const langSwitch = document.querySelectorAll('[data-lang-switch]');
+      langSwitch.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const targetLang = btn.getAttribute('data-lang-switch');
+          const currentPath = window.location.pathname;
+          const newPath = currentPath.replace(/^\/(en|ro)/, `/${targetLang}`);
+          window.location.href = newPath || `/${targetLang}/`;
+        });
+      });
+    </script>
+  </body>
+</html>

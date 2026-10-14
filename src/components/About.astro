@@ -1,0 +1,93 @@
+---
+interface Props {
+  lang?: 'en' | 'ro';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const content = lang === 'ro' ? {
+  label: 'Procesul Meu',
+  heading: 'Comunicare Clarificatoare, Decizii Pragmatice',
+  sections: [
+    {
+      number: '1',
+      title: 'Descoperire & Înțelegere',
+      description: 'Înainte de cod, claritate. Pun întrebări despre afacerea ta, utilizatorii tăi, constrângerile tale. Vreau să înțeleg ce înseamnă succes pentru tine. Această fază previne greșeli costisitoare mai târziu.'
+    },
+    {
+      number: '2',
+      title: 'Decizii Tehnice cu Scop',
+      description: 'Fiecare alegere tehnologică se face cu un motiv. Nu "asta e la modă," ci "asta rezolvă problema ta." Documentez raționamentul pentru ca echipa ta să înțeleagă nu doar ce s-a construit, ci și de ce.'
+    },
+    {
+      number: '3',
+      title: 'Livrare & Suport',
+      description: 'Codul e doar jumătate din muncă. Ajut echipa ta să înțeleagă sistemul, să depaneze problemele și să ia decizii viitoare. Disponibil pentru întrebări și ajustări după lansare.'
+    }
+  ],
+  quote: 'Mă angajezi ca să rezolvi o problemă, nu ca să te impresionez cu tehnologie. Simplitatea și fiabilitatea vin pe primul loc.'
+} : {
+  label: 'How I Work',
+  heading: 'Clear Communication, Pragmatic Decisions',
+  sections: [
+    {
+      number: '1',
+      title: 'Discovery & Understanding',
+      description: 'Before code, clarity. I ask questions about your business, your users, your constraints. I want to understand what success means to you. This phase prevents costly mistakes later.'
+    },
+    {
+      number: '2',
+      title: 'Technical Decisions with Purpose',
+      description: 'Every technology choice is made for a reason. Not "this is trendy," but "this solves your problem." I document the reasoning so your team understands not just what was built, but why.'
+    },
+    {
+      number: '3',
+      title: 'Delivery & Support',
+      description: 'Code is only half the work. I help your team understand the system, troubleshoot issues, and make future decisions. Available for questions and adjustments after launch.'
+    }
+  ],
+  quote: 'You hire me to solve a problem, not to impress you with technology. Simplicity and reliability come first.'
+};
+---
+
+<section id="about" class="py-24 md:py-32 bg-light-bg-alt">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="mb-16 text-center">
+      <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">
+        {content.label}
+      </p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-semibold text-navy-text max-w-3xl mx-auto">
+        {content.heading}
+      </h2>
+    </div>
+
+    <!-- Process Steps -->
+    <div class="space-y-12 md:space-y-16 max-w-3xl mx-auto mb-16">
+      {content.sections.map((section) => (
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-accent text-navy-hero flex items-center justify-center font-serif font-bold text-lg">
+              {section.number}
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl md:text-2xl font-serif font-semibold text-navy-text mb-2">
+                {section.title}
+              </h3>
+              <p class="text-base md:text-lg text-text-secondary leading-relaxed">
+                {section.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Quote -->
+    <div class="max-w-2xl mx-auto text-center py-8 md:py-16 border-t border-b border-divider">
+      <p class="text-lg md:text-xl font-serif italic text-text-secondary">
+        "{content.quote}"
+      </p>
+    </div>
+  </div>
+</section>

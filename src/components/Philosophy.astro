@@ -1,0 +1,48 @@
+---
+interface Props {
+  lang?: 'en' | 'ro';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const content = lang === 'ro' ? {
+  label: 'Despre mine',
+  heading: 'De ce să lucrezi împreună?',
+  highlights: [
+    'Experiență în development web cu PHP și Laravel',
+    'Abordare orientată spre soluții practice',
+    'Comunicare clarificatoare de la început',
+    'Disponibilă pentru proiecte și consulting'
+  ],
+} : {
+  label: 'About',
+  heading: 'Why work together?',
+  highlights: [
+    'Experience building web projects with PHP and Laravel',
+    'Practical, solution-oriented approach',
+    'Clear communication from the start',
+    'Available for projects and consulting'
+  ],
+};
+---
+
+<section id="about" class="py-16 md:py-20 bg-light-bg">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">
+      {content.label}
+    </p>
+    <h2 class="text-3xl md:text-4xl font-serif font-semibold text-navy-text mb-8">
+      {content.heading}
+    </h2>
+
+    <!-- Highlights -->
+    <div class="space-y-4">
+      {content.highlights.map((highlight) => (
+        <div class="flex items-start gap-3">
+          <span class="inline-block w-5 h-5 bg-accent rounded-full flex-shrink-0 mt-0.5"></span>
+          <p class="text-base text-navy-text">{highlight}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

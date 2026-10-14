@@ -1,0 +1,85 @@
+---
+interface Props {
+  lang?: 'en' | 'ro';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const content = lang === 'ro' ? {
+  label: 'Servicii',
+  heading: 'Servicii de dezvoltare web',
+  description: 'De la site-uri de prezentare la aplicații web personalizate, dezvolt soluții practice adaptate nevoilor afacerii tale.',
+  services: [
+    {
+      icon: '💻',
+      title: 'Creare site-uri web',
+      description: 'Realizez site-uri de prezentare moderne și responsive pentru afaceri care vor o prezență online profesionistă și preferă să delege acest proces.'
+    },
+    {
+      icon: '🔧',
+      title: 'Dezvoltare web personalizată',
+      description: 'Dezvolt funcționalități și aplicații web adaptate nevoilor afacerii tale, de la sisteme de programări și formulare inteligente până la integrări cu alte servicii.'
+    },
+    {
+      icon: '🛠️',
+      title: 'Mentenanță și modernizare',
+      description: 'Îmbunătățesc site-uri și aplicații web existente prin remedieri, funcționalități noi și actualizări, pentru a le menține utile, stabile și adaptate nevoilor afacerii.'
+    }
+  ]
+} : {
+  label: 'Services',
+  heading: 'Web Development Services',
+  description: 'From business websites to custom web applications, I build practical solutions tailored to your needs.',
+  services: [
+    {
+      icon: '💻',
+      title: 'Website Development',
+      description: 'I build modern, responsive websites for businesses that want a professional online presence and prefer to outsource the process.'
+    },
+    {
+      icon: '🔧',
+      title: 'Custom Web Development',
+      description: 'I develop custom features and web applications tailored to your business needs, from booking systems and smart forms to integrations with other services.'
+    },
+    {
+      icon: '🛠️',
+      title: 'Maintenance & Modernization',
+      description: 'I improve existing websites and web applications through bug fixes, new features, and updates, keeping them reliable, useful, and aligned with evolving business needs.'
+    }
+  ]
+};
+---
+
+<section id="services" class="py-2 md:py-3 bg-white scroll-mt-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Label -->
+    <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-3">
+      {content.label}
+    </p>
+
+    <!-- Heading -->
+    <h2 class="text-2xl md:text-3xl font-serif font-semibold text-navy-text mb-4">
+      {content.heading}
+    </h2>
+
+    <!-- Description -->
+    <p class="text-xs md:text-sm text-text-secondary mb-12 max-w-4xl">
+      {content.description}
+    </p>
+
+    <!-- Services Grid (3 columns) -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {content.services.map((service) => (
+        <div class="bg-light-bg p-6 rounded-lg hover:shadow-sm transition-shadow">
+          <div class="text-3xl mb-3">{service.icon}</div>
+          <h3 class="text-sm font-serif font-semibold text-navy-text mb-2">
+            {service.title}
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            {service.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

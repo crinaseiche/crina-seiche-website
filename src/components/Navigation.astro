@@ -1,0 +1,114 @@
+---
+interface Props {
+  lang?: 'en' | 'ro';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const isRomanian = lang === 'ro';
+
+const navItems = isRomanian ? [
+  { href: '/ro/', label: 'Acasă' },
+  { href: '/ro/#services', label: 'Servicii' },
+  { href: '/ro/#work', label: 'Experiență' },
+  { href: '/ro/#contact', label: 'Contact' },
+] : [
+  { href: '/', label: 'Home' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#work', label: 'Experience' },
+  { href: '/#contact', label: 'Contact' },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-divider">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Logo -->
+    <a href={lang === 'en' ? '/' : '/ro/'} class="flex items-center gap-3 group">
+      <div class="text-5xl font-serif font-bold text-navy-text tracking-tighter leading-none">
+        CS
+      </div>
+      <div class="flex flex-col">
+        <div class="text-sm font-sans font-semibold text-navy-text leading-tight">
+          CRINA SEICHE
+        </div>
+        <div class="text-xs font-sans font-normal text-text-tertiary leading-tight">
+          SENIOR SOFTWARE ENGINEER
+        </div>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center space-x-8">
+      {navItems.map(item => (
+        <a href={item.href} class="text-sm font-sans font-normal text-navy-text hover:text-accent transition-colors tracking-wide uppercase">
+          {item.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Language Switcher & Mobile Menu Button -->
+    <div class="flex items-center space-x-4">
+      <div class="hidden sm:flex items-center space-x-2 text-sm font-sans font-normal">
+        <button
+          data-lang-switch={lang === 'en' ? 'ro' : 'en'}
+          class="px-2 py-1 rounded transition-colors hover:text-accent uppercase tracking-wide"
+          aria-label={lang === 'en' ? 'Switch to Romanian' : 'Switch to English'}
+        >
+          {lang === 'en' ? 'EN' : 'RO'}
+        </button>
+        <span class="text-divider">|</span>
+        <button
+          data-lang-switch={lang === 'en' ? 'en' : 'ro'}
+          class="px-2 py-1 rounded text-text-tertiary hover:text-accent transition-colors uppercase tracking-wide"
+          aria-label={lang === 'en' ? 'Switch to English' : 'Switch to Romanian'}
+        >
+          {lang === 'en' ? 'RO' : 'EN'}
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 rounded hover:bg-light-bg transition-colors"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-divider">
+    <div class="px-4 py-3 space-y-3">
+      {navItems.map(item => (
+        <a href={item.href} class="block text-sm font-sans font-normal text-navy-text hover:text-accent transition-colors py-2 uppercase tracking-wide">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
+    });
+
+    const links = mobileMenu.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>

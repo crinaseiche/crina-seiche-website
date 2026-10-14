@@ -1,0 +1,55 @@
+---
+interface Props {
+  lang?: 'en' | 'ro';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const content = lang === 'ro' ? {
+  label: 'Lucrări',
+  heading: 'Proiecte',
+  emptyTitle: 'Portofoliu în construcție',
+  emptyDescription: 'Colectez studii de caz și proiecte de referință. Voi adăuga lucrări reale și exemple în curând.',
+  cta: 'Vrei să discutăm despre proiectul tău?'
+} : {
+  label: 'Work',
+  heading: 'Projects',
+  emptyTitle: 'Portfolio in progress',
+  emptyDescription: 'I\'m gathering case studies and reference projects. Real work examples and demonstrations coming soon.',
+  cta: 'Want to discuss your project?'
+};
+---
+
+<section id="work" class="py-24 md:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="mb-16">
+      <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-4">
+        {content.label}
+      </p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-semibold text-navy-text">
+        {content.heading}
+      </h2>
+    </div>
+
+    <!-- Empty State -->
+    <div class="max-w-2xl mx-auto text-center py-16 md:py-24">
+      <div class="mb-8">
+        <div class="w-16 h-16 mx-auto bg-accent/10 rounded-full flex items-center justify-center mb-6">
+          <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-serif font-semibold text-navy-text mb-4">
+          {content.emptyTitle}
+        </h3>
+        <p class="text-lg text-text-secondary mb-8 leading-relaxed">
+          {content.emptyDescription}
+        </p>
+        <a href={`#contact`} class="btn btn-primary">
+          {content.cta}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,220 @@
+---
+interface Props {
+  lang?: 'en' | 'ro';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const content = lang === 'ro' ? {
+  label: 'Experiență',
+  heading: 'Experiența mea profesională',
+  description: 'Peste 15 ani de experiență în dezvoltarea aplicațiilor web, cu focus pe backend, integrări și îmbunătățirea aplicațiilor existente. De-a lungul carierei, am avut ocazia să lucrez atât în dezvoltare, cât și în roluri care au implicat coordonarea echipelor și colaborarea cu clienții.',
+  jobs: [
+    {
+      role: 'Web Developer',
+      company: 'DotWhite',
+      period: 'Iunie 2025 – Prezent',
+      description: 'Am lucrat la mentenanța și actualizarea unei aplicații web din domeniul medical, în special la funcționalitățile backend și la fluxurile de facturare, folosind PHP 8.x, Laravel și Lumen. Am lucrat la integrări API, gestionarea fișierelor prin S3 și documentarea API-urilor. Am asigurat și mentenanța unei aplicații monolitice mai vechi, dezvoltată în PHP 5.3, folosind instrumente AI pentru a sprijini activitatea de dezvoltare.',
+      tech: ['PHP 8.x', 'Laravel', 'Lumen', 'Microservicii', 'REST APIs', 'S3', 'OpenAPI', 'Dezvoltare asistată de AI']
+    },
+    {
+      role: 'Web Developer',
+      company: 'P4B',
+      period: 'Noiembrie 2020 – Iunie 2025',
+      description: 'Am dezvoltat microservicii PHP și am contribuit la îmbunătățirea aplicațiilor existente prin reorganizarea și simplificarea codului. De asemenea, am lucrat la documentarea API-urilor cu Swagger/OpenAPI și la testarea componentelor backend.',
+      tech: ['PHP 8.2', 'Laravel', 'Lumen', 'MySQL', 'Swagger/OpenAPI', 'PHPUnit']
+    },
+    {
+      role: 'Web Developer',
+      company: 'Crystal Code',
+      period: 'Mai 2020 – Noiembrie 2020',
+      description: 'Am lucrat la dezvoltarea și întreținerea aplicațiilor Symfony, identificând și rezolvând probleme de performanță și contribuind la îmbunătățirea stabilității acestora. Am utilizat Jenkins pentru automatizarea proceselor de integrare continuă, într-un mediu Linux Ubuntu.',
+      tech: ['PHP', 'Symfony', 'MySQL', 'Jenkins', 'Ubuntu']
+    },
+    {
+      role: 'Web Developer',
+      company: 'Lateral Inc.',
+      period: 'Octombrie 2015 – Mai 2020',
+      description: 'Am dezvoltat și întreținut aplicații web pentru clienți internaționali din domeniile medical, financiar și turism. Am lucrat atât la dezvoltarea funcționalităților, cât și la îmbunătățirea aplicațiilor existente, prin rezolvarea problemelor apărute în producție și reorganizarea codului pentru o funcționare mai stabilă și o întreținere mai ușoară.',
+      tech: ['PHP', 'Laravel', 'Zend Framework', 'WordPress', 'MySQL', 'REST APIs']
+    },
+    {
+      role: 'Developer & Technical Team Lead / Scrum Master',
+      company: 'Russmedia Tech',
+      period: 'Mai 2012 – Octombrie 2015',
+      description: 'Am coordonat o echipă de cinci developeri care lucrau la platforme de recrutare cu trafic ridicat, dezvoltate cu Symfony. Pe lângă coordonarea echipei și responsabilitățile Scrum, am fost implicată și în dezvoltarea aplicațiilor. Am contribuit la optimizarea interogărilor bazei de date pentru îmbunătățirea performanței căutării și am colaborat cu echipa la integrarea Solr și Actonomy pentru a crește relevanța rezultatelor și calitatea potrivirii dintre candidați și joburi.',
+      tech: ['PHP', 'Symfony', 'Solr', 'Actonomy', 'MySQL', 'Memcached', 'Coordonare tehnică', 'Scrum']
+    },
+    {
+      role: 'Web Developer',
+      company: 'Aelius',
+      period: 'August 2011 – Mai 2012',
+      description: 'Am contribuit la dezvoltarea unei aplicații de gestionare a timpului, folosind Symfony, atât pentru partea de frontend, cât și pentru cea de backend.',
+      tech: ['PHP', 'Symfony']
+    }
+  ]
+} : {
+  label: 'Experience',
+  heading: 'My Professional Journey',
+  description: 'With 15+ years in web development, I\'ve worked on a wide range of projects, focusing on backend development, integrations, and improving existing applications. My experience also includes coordinating development teams and working closely with clients to understand their needs.',
+  jobs: [
+    {
+      role: 'Web Developer',
+      company: 'DotWhite',
+      period: 'June 2025 – Present',
+      description: 'Maintained and updated an existing healthcare web application, focusing primarily on backend functionality and invoicing workflows using PHP 8.x, Laravel, and Lumen. Worked on API integrations, S3 file handling, and API documentation. Also maintained a legacy monolithic application built with PHP 5.3, using AI-assisted development tools to support implementation and problem-solving.',
+      tech: ['PHP 8.x', 'Laravel', 'Lumen', 'Microservices', 'REST APIs', 'S3', 'OpenAPI', 'AI-Assisted Development']
+    },
+    {
+      role: 'Web Developer',
+      company: 'P4B',
+      period: 'November 2020 – June 2025',
+      description: 'Developed and maintained PHP microservices and refactored monolithic applications to improve code structure and maintainability. Worked on API documentation using Swagger/OpenAPI and contributed to backend unit testing.',
+      tech: ['PHP 8.2', 'Laravel', 'Lumen', 'MySQL', 'Swagger/OpenAPI', 'PHPUnit']
+    },
+    {
+      role: 'Web Developer',
+      company: 'Crystal Code',
+      period: 'May 2020 – November 2020',
+      description: 'Maintained Symfony applications, troubleshooting performance bottlenecks and improving application stability. Worked with Jenkins-based CI workflows in an Ubuntu environment.',
+      tech: ['PHP', 'Symfony', 'MySQL', 'Jenkins', 'Ubuntu']
+    },
+    {
+      role: 'Web Developer',
+      company: 'Lateral Inc.',
+      period: 'October 2015 – May 2020',
+      description: 'Developed and maintained web applications for international clients in the healthcare, finance, and travel sectors. Worked on existing codebases, resolved production issues, and refactored applications to improve stability and maintainability.',
+      tech: ['PHP', 'Laravel', 'Zend Framework', 'WordPress', 'MySQL', 'REST APIs']
+    },
+    {
+      role: 'Developer & Technical Team Lead / Scrum Master',
+      company: 'Russmedia Tech',
+      period: 'May 2012 – October 2015',
+      description: 'Led a team of five developers working on high-traffic job portals built with Symfony. Balanced hands-on development with team leadership and Scrum responsibilities. Contributed to database query optimization to improve job search performance and worked with the team on integrating Solr and Actonomy to enhance search relevance and job matching.',
+      tech: ['PHP', 'Symfony', 'Solr', 'Actonomy', 'MySQL', 'Memcached', 'Team Leadership', 'Scrum']
+    },
+    {
+      role: 'Web Developer',
+      company: 'Aelius',
+      period: 'August 2011 – May 2012',
+      description: 'Developed a custom time-management application using Symfony, working on both frontend and backend development.',
+      tech: ['PHP', 'Symfony']
+    }
+  ]
+};
+---
+
+<section id="work" class="py-8 md:py-10 bg-white scroll-mt-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="mb-12">
+      <p class="text-xs font-semibold tracking-widest text-accent uppercase mb-3">
+        {content.label}
+      </p>
+      <h2 class="text-3xl md:text-4xl font-serif font-semibold text-navy-text mb-3">
+        {content.heading}
+      </h2>
+      <p class="text-sm text-text-secondary">
+        {content.description}
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="space-y-4">
+      {content.jobs.map((job, index) => (
+        <div class="border-l-2 border-accent pl-8 pb-4 relative">
+          <!-- Timeline dot -->
+          <div class="absolute -left-4 top-1 w-5 h-5 bg-accent rounded-full border-4 border-white"></div>
+
+          <!-- Job content -->
+          <div>
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1">
+              <div>
+                <h3 class="text-base font-serif font-semibold text-navy-text">
+                  {job.role}
+                </h3>
+                <p class="text-sm text-accent font-medium">
+                  {job.company}
+                </p>
+              </div>
+              <p class="text-xs text-text-tertiary md:text-right mt-0.5 md:mt-0">
+                {job.period}
+              </p>
+            </div>
+
+            <p class="text-sm text-text-secondary mb-3 leading-normal">
+              {job.description}
+            </p>
+
+            <!-- Tech tags -->
+            <div class="flex flex-wrap gap-2">
+              {job.tech.map(t => (
+                <span class="inline-block px-3 py-1 bg-light-bg text-xs font-medium text-navy-text rounded-full border border-divider">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Education & Certifications -->
+    <div class="mt-12 pt-12 border-t border-divider">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 md:divide-x md:divide-divider">
+        <!-- Education -->
+        <div>
+          <h3 class="text-xl font-serif font-semibold text-navy-text mb-4">
+            {lang === 'en' ? 'Education' : 'Educație'}
+          </h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm font-semibold text-navy-text">
+                {lang === 'en' ? 'Master\'s Degree, IT Management' : 'Master - IT Management'}
+              </p>
+              <p class="text-xs text-text-secondary">University of Oradea, 2011 – 2013</p>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-navy-text">
+                {lang === 'en' ? 'Bachelor\'s Degree, Economics and Business Informatics' : 'Bachelor - Economie și Informatică de Afaceri'}
+              </p>
+              <p class="text-xs text-text-secondary">Babeș-Bolyai University, Cluj-Napoca, 2008 – 2011</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="md:pl-12">
+          <h3 class="text-xl font-serif font-semibold text-navy-text mb-4">
+            {lang === 'en' ? 'Certifications & Languages' : 'Certificări & Limbi'}
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 18H7v-1h7v1zm8-4H5V4h17v12z"/>
+                <path d="M9 10h2v2H9zm4 0h2v2h-2z"/>
+              </svg>
+              <div>
+                <p class="text-xs font-semibold text-navy-text">{lang === 'en' ? 'Certified Scrum Master' : 'Certified Scrum Master'}</p>
+                <p class="text-xs text-text-secondary">Scrum Alliance</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 18H7v-1h7v1zm8-4H5V4h17v12z"/>
+                <path d="M9 10h2v2H9zm4 0h2v2h-2z"/>
+              </svg>
+              <div>
+                <p class="text-xs font-semibold text-navy-text">{lang === 'en' ? 'Certificate in Advanced English' : 'Certificate in Advanced English'}</p>
+                <p class="text-xs text-text-secondary">Cambridge Assessment English</p>
+              </div>
+            </div>
+            <div class="pt-2">
+              <p class="text-xs text-text-secondary">{lang === 'en' ? 'Languages: Romanian (native), English (professional proficiency)' : 'Limbi: Română (nativă), Engleză (fluență profesională)'}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
