@@ -53,8 +53,17 @@ const otherLangUrl = canonical.replace(`/${lang}/`, `/${otherLang}/`);
         btn.addEventListener('click', (e) => {
           const targetLang = btn.getAttribute('data-lang-switch');
           const currentPath = window.location.pathname;
-          const newPath = currentPath.replace(/^\/(en|ro)/, `/${targetLang}`);
-          window.location.href = newPath || `/${targetLang}/`;
+          let newPath;
+
+          if (targetLang === 'ro') {
+            // Switch to Romanian: prepend /ro/
+            newPath = currentPath === '/' ? '/ro/' : '/ro' + currentPath;
+          } else {
+            // Switch to English: remove /ro/ prefix
+            newPath = currentPath.replace(/^\/ro/, '') || '/';
+          }
+
+          window.location.href = newPath;
         });
       });
     </script>
